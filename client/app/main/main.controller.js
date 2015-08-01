@@ -2,6 +2,7 @@
 
 angular.module('workspaceApp')
   .controller('MainCtrl', function ($scope, $http, socket) {
+    $scope.loggedIn=falseg;
     $scope.awesomeThings = [];
 
     $http.get('/api/things').success(function(awesomeThings) {
@@ -23,5 +24,10 @@ angular.module('workspaceApp')
 
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('thing');
+    });
+    
+    $http.post('/api/yelpResponses/yelp',{place:"san francisco, ca"}).success(function(data) {
+      $scope.businesses=data.businesses;
+      console.log($scope.businesses);
     });
   });
