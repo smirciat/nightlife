@@ -1,14 +1,29 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<div class="container" ng-hide="loggedIn">
+<div class="container" ng-hide="hasLocation">
   <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
   <form class="thing-form">
-    <label>What is your location?</label>
     <p class="input-group">
-      <input type="text" class="form-control" placeholder="Add a new thing here." ng-model="newThing">
+      <input type="text" class="form-control" placeholder="Enter Location Here (City, State)" ng-model="place">
       <span class="input-group-btn">
-        <button type="submit" class="btn btn-primary" ng-click="addThing()">Add New</button>
+        <button type="submit" class="btn btn-primary" ng-click="setLocation()">Set Location</button>
       </span>
     </p>
   </form>
+</div>
+<div class="container" ng-show="hasLocation">
+  <a href="http://www.yelp.com"><img src="/assets/images/yelp.gif" ></a>
+  <div ng-repeat="business in businesses" ng-if="$index < 10">
+     <div class="row" ng-click="gotoYelp(business.url)">
+        <div class="col-md-2 ">
+          <img ng-src="{{business.image_url}}">
+        </div>
+        <div class="col-md-10">
+          <h2>{{business.name}}</h2>
+          <h4>{{business.location.cross_streets||business.location.address[0]}}</h4>
+        </div>
+     </div>
+      
+      
+  </div>
 </div>
