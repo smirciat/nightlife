@@ -13,17 +13,16 @@
 </div>
 <div class="container" ng-show="hasLocation">
   <a href="http://www.yelp.com"><img src="/assets/images/yelp.gif" ></a>
-  <div ng-repeat="business in businesses" ng-if="$index < 10">
-     <div class="row" ng-click="gotoYelp(business.url)">
-        <div class="col-md-2 ">
-          <img ng-src="{{business.image_url}}">
-        </div>
-        <div class="col-md-10">
-          <h2>{{business.name}}</h2>
-          <h4>{{business.location.cross_streets||business.location.address[0]}}</h4>
-        </div>
-     </div>
+  <div class="row" >
+    
+      <ul class="list-group" ng-repeat="business in businesses" ng-if="$index < 10" ng-controller="InnerCtrl">  
+        <li class = "list-item" >
+            <button ng-class="buttonClass" ng-click="going()">{{numGoing}} Going</button>
+            <img ng-src="{{business.image}}">
+            <h2 ng-click="gotoYelp(business.url)">{{business.name}}</h2>
+            <h4>{{business.cross_streets||business.address}}</h4>
       
-      
+        </li>
+      </ul>
   </div>
 </div>
