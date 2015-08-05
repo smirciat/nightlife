@@ -1,6 +1,8 @@
+<div class="main">
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="container" ng-hide="hasLocation">
+ <div class="full">
   <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
   <form class="thing-form">
     <p class="input-group">
@@ -10,19 +12,23 @@
       </span>
     </p>
   </form>
-</div>
+ </div>
+</div>  
 <div class="container" ng-show="hasLocation">
   <a href="http://www.yelp.com"><img src="/assets/images/yelp.gif" ></a>
+  <a href="#" ng-click="reset()"><button class="btn btn-warning">Reset User Locatation</button></a>
 <div class="row" >
    
-      <ul class="list-group" ng-repeat="business in businesses" ng-if="$index < 10" >  
+      <ul class="list-group" ng-repeat="business in businesses" ng-controller="InnerCtrl" ng-if="$index < 15" >  
         <li class = "list-item" >
-            <button class="btn btn-warning" ng-click="going()">{{numGoing}} Going</button>
+            <button ng-show="isLoggedIn()" ng-class="isGoing[$index] ? 'btn btn-success': 'btn btn-danger'" ng-click="addGoing(business.url, $index)">{{numGoing.count}} Going</button>
             <img ng-src="{{business.image_url}}">
-            <h2 ng-click="gotoYelp(business.url)">{{business.name}}</h2>
-            <h4>{{business.location.cross_streets||business.location.address[0]}}</h4>
+            <a href="{{business.url}}" ng-click="gotoYelp(business.url)"><h2 >{{business.name}}</h2>
+            <h4>{{business.location.cross_streets||business.location.address[0]}}</h4></a>
+            <p ng-show="false">{{init(business.url, $index)}}</p>
        
         </li>
       </ul>
   </div>
+</div>
 </div>

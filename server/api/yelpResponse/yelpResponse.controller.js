@@ -50,7 +50,7 @@ exports.update = function(req, res) {
   YelpResponse.findById(req.params.id, function (err, yelpResponse) {
     if (err) { return handleError(res, err); }
     if(!yelpResponse) { return res.status(404).send('Not Found'); }
-    var updated = _.merge(yelpResponse, req.body);
+    var updated = _.extend(yelpResponse, req.body);
     updated.save(function (err) {
       if (err) { return handleError(res, err); }
       return res.status(200).json(yelpResponse);

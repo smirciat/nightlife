@@ -5,7 +5,8 @@ var mongoose = require('mongoose'),
 
 var YelpResponseSchema = new Schema({
   userId: String,
-  city: String
+  city: String,
+  going: [{url:String}]
 });
 
 module.exports = mongoose.model('YelpResponse', YelpResponseSchema);
