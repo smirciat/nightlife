@@ -7,9 +7,9 @@
   <form class="thing-form">
     <p class="input-group">
       <input type="text" class="form-control" placeholder="Enter Location Here (City, State)" ng-model="place">
-      <span class="input-group-btn">
-        <button type="submit" class="btn btn-primary" ng-click="setLocation()">Set Location</button>
-      </span>
+      <span class="input-group-btn"><button type="submit" class="btn btn-primary" ng-click="setLocation()">Set Location</button></span>
+        
+      
     </p>
   </form>
  </div>
@@ -23,7 +23,7 @@
         <li class = "list-item" >
             <button ng-show="isLoggedIn()" ng-class="isGoing[$index] ? 'btn btn-success': 'btn btn-danger'" ng-click="addGoing(business.url, $index)">{{numGoing.count}} Going</button>
             <img ng-src="{{business.image_url}}">
-            <a href="{{business.url}}" ng-click="gotoYelp(business.url)"><h2 >{{business.name}}</h2>
+            <a href="{{business.url}}" ><h2 >{{business.name}}</h2>
             <h4>{{business.location.cross_streets||business.location.address[0]}}</h4></a>
             <p ng-show="false">{{init(business.url, $index)}}</p>
        

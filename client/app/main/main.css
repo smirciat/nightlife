@@ -1,6 +1,8 @@
 .thing-form {
     margin: 20px 0;
     background-color:white;
+    vertical-align: middle;
+    border-radius: 5px;
 }
 
 #banner {
@@ -59,6 +61,9 @@ h4  {
 }
 img{
     margin-bottom:10px;
+    vertical-align: middle;
+    border-radius: 5px;
+    
 }
 .row{
     margin-bottom:10px;
